@@ -1,0 +1,20 @@
+Verilog 
+[ModuleDescription 
+(Module (Ident "mux21_switch") [Ident "out",Ident "ctrl",Ident "in1",Ident "in2"] 
+ [
+ OutputDeclItem (OutputDecl Nothing [Ident "out"]),
+ InputDeclItem (InputDecl Nothing [Ident "ctrl",Ident "in1",Ident "in2"]),
+ NetDeclItem (NetDecl wire Nothing Nothing [Ident "w"]),
+ NetDeclItem (NetDecl supply1 Nothing Nothing [Ident "power"]),
+ NetDeclItem (NetDecl supply0 Nothing Nothing [Ident "ground"]),
+ PrimitiveInstItem (PrimitiveInst pmos Nothing Nothing [PrimInst (Just (PrimInstName (Ident "N1") Nothing)) [ExprVar (Ident "w"),ExprVar (Ident "power"),ExprVar (Ident "ctrl")]]),
+ 
+ PrimitiveInstItem (PrimitiveInst nmos Nothing Nothing [PrimInst (Just (PrimInstName (Ident "N2") Nothing)) [ExprVar (Ident "w"),ExprVar (Ident "ground"),ExprVar (Ident "ctrl")]]),
+ 
+ PrimitiveInstItem (PrimitiveInst cmos Nothing Nothing [PrimInst (Just (PrimInstName (Ident "C1") Nothing)) [ExprVar (Ident "out"),ExprVar (Ident "in1"),ExprVar (Ident "w"),ExprVar (Ident "ctrl")]]),
+ 
+ PrimitiveInstItem (PrimitiveInst cmos Nothing Nothing [PrimInst (Just (PrimInstName (Ident "C2") Nothing)) [ExprVar (Ident "out"),ExprVar (Ident "in2"),ExprVar (Ident "ctrl"),ExprVar (Ident "w")]])
+ ]
+ )
+]
+
