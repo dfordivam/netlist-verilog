@@ -87,7 +87,9 @@ instance Show Sign where
   show Neg = "-"
 
 intExpr :: Integral a => a -> Expression
-intExpr x = ExprNum (IntNum Nothing Nothing Nothing (show x))
+-- Divam: Added to make the code compile, can have unwanted consequences
+-- intExpr x = ExprNum (IntNum Nothing Nothing Nothing (show x))
+intExpr x = ExprNum (IntNum Nothing Nothing Nothing (show (toInteger x)))
 
 data Number
   -- | An integral value: sign, size, and base.
