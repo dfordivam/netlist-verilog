@@ -90,10 +90,11 @@ data Description
 -- output), and the body of the module (a list of declarations).  In the spec,
 -- the ports have a more complicated type than simply @Ident@.
 data Module
-  = Module Ident     -- The name of module
-           [Ident]   -- The list of ports, including both inputs and outputs
-                     -- In the spec, this is a more complicated type.
-           [Item]    -- The module's body, a list of declarations.
+  = Module { name   :: Ident,    -- The name of module
+             ports  :: [Ident],  -- The list of ports, including both inputs and outputs
+                                 -- In the spec, this is a more complicated type.
+             body   :: [Item]    -- The module's body, a list of declarations.
+  }
   deriving (Eq, Ord, Show, Data, Typeable)
 
 -- | A declaration.
