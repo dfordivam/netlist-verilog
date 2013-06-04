@@ -90,10 +90,10 @@ data Description
 -- output), and the body of the module (a list of declarations).  In the spec,
 -- the ports have a more complicated type than simply @Ident@.
 data Module
-  = Module { name   :: Ident,    -- The name of module
-             ports  :: [Ident],  -- The list of ports, including both inputs and outputs
+  = Module { modName   :: Ident,    -- The name of module
+             modPorts  :: [Ident],  -- The list of ports, including both inputs and outputs
                                  -- In the spec, this is a more complicated type.
-             body   :: [Item]    -- The module's body, a list of declarations.
+             modBody   :: [Item]    -- The module's body, a list of declarations.
   }
   deriving (Eq, Ord, Show, Data, Typeable)
 
@@ -122,12 +122,13 @@ data Item
 
 -- | User-defined primitive (UDP)
 data UDP
-  = UDP Ident     -- Name of UDP
-        Ident     -- Name of output variable
-        [Ident]   -- Name of input variables
-        [UDPDecl] -- input/output/reg declarations
-        (Maybe UDPInitialStatement)
-        TableDefinition
+  = UDP {   udpName    ::  Ident,     -- Name of UDP
+            udpOutPort ::  Ident,     -- Name of output variable
+            udpInPorts ::  [Ident],   -- Name of input variables
+            udpDecls   ::  [UDPDecl], -- input/output/reg declarations
+            udpInitStatm::(Maybe UDPInitialStatement),
+            udpDef     ::  TableDefinition
+  }
   deriving (Eq, Ord, Show, Data, Typeable)
 
 -- | A UDP can have output, input, and reg declarations.
